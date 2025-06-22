@@ -1,4 +1,3 @@
-<?php include("connexion.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -44,23 +43,30 @@
 <body>
   <div class="container">
     <h1>Bienvenue au Quiz L2fsi</h1>
+     <h2>COURS INFO_JURIDIQUE</h2>
 
-    <?php if (!isset($_POST['username'])): ?>
-      <form method="post">
-        <label for="username">Entrez votre nom :</label>
-        <input type="text" name="username" required />
-        <button class="btn" type="submit">Commencer</button>
-      </form>
-      <div style="background-color: #f0f8ff; padding: 15px; border: 2px solid #007bff; border-radius: 8px; font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; text-align: center;">
-  <p style="font-size: 18px; color: #333;">
-    Bienvenue sur ce site ! Il vous permettra de réviser efficacement pour votre examen.
-  </p>
-</div>
 
-    <?php else: ?>
-      <div id="quizSection">
-        <h2 id="welcomeUser">Bonjour <?php echo htmlspecialchars($_POST['username']); ?>, bonne chance !</h2>
+    <div id="quizSection" class="hidden">
+      <h2 id="welcomeUser"></h2>
+      <!-- Ici tu pourras mettre tes questions de quiz -->
+    </div>
+  </div>
 
+  <script>
+    function startQuiz() {
+      const name = document.getElementById('username').value.trim();
+      if (name === '') {
+        alert("Veuillez entrer votre nom.");
+        return;
+      }
+
+      document.getElementById('introSection').classList.add('hidden');
+      document.getElementById('quizSection').classList.remove('hidden');
+      document.getElementById('welcomeUser').textContent = `Bonjour ${name}, bonne chance !`;
+    }
+  </script>
+</body>
+</html>
         <form id="quizForm">
           <div class="question">
             <p>1. Qu'est-ce que le droit objectif ?</p>
@@ -606,7 +612,7 @@
           <p id="score"></p>
         </div>
       </div>
-    <?php endif; ?>
+   
   </div>
 
   <script>
