@@ -35,6 +35,6 @@
 <body>
   <h1>Bienvenue sur BoostRévision</h1>
   <p>Ce site vous aidera à réviser pour vos examens !</p>
-  <a href="accueil.php" class="btn">Commencer</a>
+  <a href="index.php" class="btn">Commencer</a>
 </body>
 </html>
